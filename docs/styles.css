@@ -1,3 +1,9 @@
+:root {
+	--cellBorder: 1px;
+	--cols: 4;
+	--rows: 4;
+	--cellSize: min(calc(70vh / (var(--rows) + 1)), calc(100vw / (var(--cols) + 1)));
+}
 body{
 	margin: 0;
 	overflow: hidden;
@@ -5,5 +11,43 @@ body{
 #gameContainer{
 	width: 100vw;
 	height: 100vh;
+	background-color: darkorange;
+}
+.boardSection{
+	position: relative;
+	height: min(70vh, 100vw);
+	width: 100vw;
 	background-color: orange;
+}
+.playerSection{
+	position: relative;
+	width: 100vw;
+	height: max(30vh, calc(100vh - 100vw));
+	background-color: orange;
+	border-top: orangered solid 5px;
+}
+.board{
+	position: absolute;
+	/*background-color: yellow;*/
+	display: block;
+	margin: auto;
+	width: calc(var(--cellSize) * var(--cols));
+	height: calc(var(--cellSize) * var(--rows));
+	left: calc((100vw - var(--cellSize) * var(--cols)) / 2);
+	top: calc((min(70vh, 100vw) - var(--cellSize) * var(--rows)) / 2);
+}
+.row{
+	position: relative;
+	display: block;
+	width: calc(var(--cellSize) * var(--cols));
+	height: var(--cellSize);
+}
+.cell{
+	position: relative;
+	display: block;
+	width: calc(var(--cellSize) - var(--cellBorder) * 2);
+	height: calc(var(--cellSize) - var(--cellBorder) * 2);
+	float: left;
+	background-color: white;
+	border: var(--cellBorder) solid gray;
 }
