@@ -19,6 +19,12 @@ class Game{
 
 		this.boardSection.appendChild(this.board)
 
+
+		this.images = ["images/troll.png", "images/buzka.png"]
+
+
+		this.build()
+
 	}
 	build(){
 		for(let i=0; i<this.rows; i++){
@@ -39,4 +45,3 @@ class Game{
 }
 
 const b = new Game(4, 4)
-b.build()

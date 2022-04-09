@@ -50,4 +50,8 @@ body{
 	float: left;
 	background-color: white;
 	border: var(--cellBorder) solid gray;
+	background-image: url("imgs/zapyt.png");
+	background-size: calc(var(--cellSize) * 9 / 10) calc(var(--cellSize) * 9 / 10);
+	background-position: center;
+	background-repeat: no-repeat;
 }
