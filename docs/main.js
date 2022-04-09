@@ -20,7 +20,13 @@ class Game{
 		this.boardSection.appendChild(this.board)
 
 
+
 		this.images = ["images/troll.png", "images/buzka.png"]
+
+		this.imageRepetitions = [0, 0]
+		//images.length = imageRepetitions.length
+
+		this.imageData = {}
 
 
 		this.build()
@@ -36,22 +42,30 @@ class Game{
 
 			for(let j=0; j<this.cols; j++){
 				const cell = document.createElement("cell")
+				const pos = `${j}:${i}`
 				cell.setAttribute("class", "cell")
 				cell.setAttribute("onclick", "clickCell(this)")
-				cell.setAttribute("data-position", `${j}:${i}`)
+				cell.setAttribute("data-position", pos)
 				
 				row.appendChild(cell)
+
+				let r = Math.floor(Math.random()*2)
+				while(this.imageRepetitions[r] >= 2){
+					r = Math.floor(Math.random()*2)
+					console.log(r)
+				}
+				this.imageData[pos] = r
 			}
 		}
 	}
 }
 
-const b = new Game(2, 2)
+const game = new Game(2, 2)
 
 
 const clickCell = (cell)=>{
 	const position = cell.getAttribute("data-position")
-	console.log(position)
+	console.log(position, game.imageData[position])
 
 }
 
