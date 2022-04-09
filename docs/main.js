@@ -44,4 +44,4 @@ class Game{
 	}
 }
 
-const b = new Game(4, 4)
+const b = new Game(7, 6)
