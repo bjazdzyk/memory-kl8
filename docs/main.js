@@ -21,7 +21,7 @@ class Game{
 
 
 
-		this.images = ["images/troll.png", "images/buzka.png"]
+		this.images = ["imgs/troll.png", "imgs/buzka.png"]
 
 		this.imageRepetitions = [0, 0]
 		//images.length = imageRepetitions.length
@@ -54,6 +54,7 @@ class Game{
 					r = Math.floor(Math.random()*2)
 					console.log(r)
 				}
+				this.imageRepetitions[r]++
 				this.imageData[pos] = r
 			}
 		}
@@ -66,6 +67,7 @@ const game = new Game(2, 2)
 const clickCell = (cell)=>{
 	const position = cell.getAttribute("data-position")
 	console.log(position, game.imageData[position])
+	cell.style["background-image"] = `url(${game.images[game.imageData[position]]})`
 
 }
 
