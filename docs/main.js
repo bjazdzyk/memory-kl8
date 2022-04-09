@@ -34,9 +34,11 @@ class Game{
 			this.board.appendChild(row)
 			//this.boardSection.appendChild(document.createElement("br"))
 
-			for(let i=0; i<this.cols; i++){
+			for(let j=0; j<this.cols; j++){
 				const cell = document.createElement("cell")
 				cell.setAttribute("class", "cell")
+				cell.setAttribute("onclick", "clickCell(this)")
+				cell.setAttribute("data-position", `${j}:${i}`)
 				
 				row.appendChild(cell)
 			}
@@ -44,4 +46,14 @@ class Game{
 	}
 }
 
-const b = new Game(7, 6)
+const b = new Game(2, 2)
+
+
+const clickCell = (cell)=>{
+	const position = cell.getAttribute("data-position")
+	console.log(position)
+
+}
+
+
+//7 * 6 = 42 (21 uczniów 21 par 21*2=42)

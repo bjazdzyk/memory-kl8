@@ -1,7 +1,7 @@
 :root {
 	--cellBorder: 1px;
-	--cols: 7;
-	--rows: 6;
+	--cols: 2;
+	--rows: 2;
 	--cellSize: min(calc(70vh / (var(--rows) + 1)), calc(100vw / (var(--cols) + 1)));
 }
 body{
@@ -55,6 +55,7 @@ body{
 	background-position: center;
 	background-repeat: no-repeat;
 	transform: scale(0.9);
+	transition: transform 0.5s;
 }
 
 .cell:hover{
