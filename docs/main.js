@@ -24,14 +24,16 @@ class Game{
 		this.boardSection.appendChild(this.board)
 
 		//linki do zdjęć
-		this.images = ["imgs/troll.png", "imgs/buzka.png"]
+		this.alternativeImage = "imgs/bug.png" //<-- gdy jest za mało zdjęć wypełniamy tym
+		this.images = ["imgs/troll.png", "imgs/buzka.png", this.alternativeImage]
 
 		//ile razy zdjęcie było już przypisane do kafelka
 		this.imageRepetitions = []
 		//wypełnienie tablicy zerami
-		for(let i=0; i<this.images.length; i++){
+		for(let i=0; i<this.images.length-1; i++){
 			this.imageRepetitions.push(0)
 		}
+		this.zuzyteZdjecia = 0
 
 		
 		//indexy zdjęć dla poszczególnych coordów
@@ -64,15 +66,32 @@ class Game{
 				row.appendChild(cell)
 
 				//losowanie zdjęcia
-				let r = Math.floor(Math.random()*this.images.length)
-				//sprawdzanie czy było już wylosowane 2 razy
-				while(this.imageRepetitions[r] >= 2){
-					r = Math.floor(Math.random()*this.images.length)
+				const r = Math.floor(Math.random()*(this.images.length-1 - this.zuzyteZdjecia)) 
+				let l = 0
+				
+				if(this.zuzyteZdjecia>=this.images.length-1){
+					this.imageData[pos] = this.images.length-1
+				}else{
+
+					for(let i=0; i<this.images.length-1; i++){
+						if(this.imageRepetitions[i]<2){
+
+
+							if(l == r){
+								//zliczanie ilości wylosowań
+								this.imageRepetitions[i]++
+								//zapisywanie id zdjęcia w imageData
+								this.imageData[pos] = i
+								if(this.imageRepetitions[i] == 2){
+									this.zuzyteZdjecia ++
+								}
+							}
+							l++
+						}
+					}
 				}
-				//zliczanie ilości wylosowań
-				this.imageRepetitions[r]++
-				//zapisywanie id zdjęcia w imageData
-				this.imageData[pos] = r
+
+				
 			}
 		}
 	}
